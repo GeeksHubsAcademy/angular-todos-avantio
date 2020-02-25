@@ -1,3 +1,19 @@
-<header>hola</header>
-<main>body</main>
-<footer>footer</footer>
+<header>
+  <input
+    type="text"
+    (keyup)="onKeyUpHandler($event)"
+    [(ngModel)]="textNewTodo"
+  />
+  <h1>{{ textNewTodo }}</h1>
+</header>
+<main>
+  <div class="todo" *ngFor="let todo of todos">
+    <div class="text">
+      {{ todo.text }}
+    </div>
+  </div>
+</main>
+
+<pre>
+  {{ todos | json }}
+</pre>

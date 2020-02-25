@@ -1,0 +1,26 @@
+
+ header {
+   display: flex;
+   justify-content: center;
+   background: #444;
+   color: white;
+   padding: 2em;
+   input {
+    all:unset;
+     background: #555;
+     color:white;
+     padding: 1em;
+   }
+ }
+ main {
+   display: flex;
+   flex-flow: column;
+   align-items: center;
+   & > .todo {
+     min-width: 300px;
+     background-color: #eee;
+     margin: 1em 0;
+     padding: 1em;
+     border: solid 1px #666;
+   }
+ }

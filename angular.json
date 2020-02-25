@@ -28,9 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/micssglobal.css"
-            ],
+              "src/styles.scss"            ],
             "scripts": []
           },
           "configurations": {
