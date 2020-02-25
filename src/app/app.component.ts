@@ -45,4 +45,7 @@ export class AppComponent {
     };
     this.todos.push(newTodo);
   }
+  deleteTodo(id:string) {
+    this.todos = this.todos.filter(todo => todo.id !== id)
+  }
 }

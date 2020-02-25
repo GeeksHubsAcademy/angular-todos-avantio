@@ -13,6 +13,7 @@
     </div>
     <div class="actions">
       <input type="checkbox"  [checked]="todo.completed" (click)="toggleCompleted(todo.id)">
+      <button (click)="deleteTodo(todo.id)">delete</button>
     </div>
   </div>
 </main>
