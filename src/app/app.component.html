@@ -7,9 +7,12 @@
   <h1>{{ textNewTodo }}</h1>
 </header>
 <main>
-  <div class="todo" *ngFor="let todo of todos">
+  <div class="todo {{ todo.completed ? 'completed' : 'uncompleted' }}" *ngFor="let todo of todos">
     <div class="text">
       {{ todo.text }}
+    </div>
+    <div class="actions">
+      <input type="checkbox"  [checked]="todo.completed" (click)="toggleCompleted(todo.id)">
     </div>
   </div>
 </main>

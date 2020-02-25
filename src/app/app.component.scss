@@ -16,11 +16,15 @@
    display: flex;
    flex-flow: column;
    align-items: center;
-   & > .todo {
+  .todo {
      min-width: 300px;
      background-color: #eee;
      margin: 1em 0;
      padding: 1em;
      border: solid 1px #666;
+     &.completed {
+       opacity: 0.3;
+       text-decoration: line-through;
+     }
    }
  }
