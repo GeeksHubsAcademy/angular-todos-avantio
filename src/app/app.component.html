@@ -14,7 +14,7 @@
 </header>
 <main>
   <app-todo
-    *ngFor="let todo of todosFiltered"
+    *ngFor="let todo of todosFiltered; trackBy :  trackByFn"
     [data]="todo"
     (delete)="deleteTodo($event)"
     (edit)="editTodo($event)"

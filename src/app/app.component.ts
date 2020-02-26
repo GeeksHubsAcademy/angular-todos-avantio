@@ -34,9 +34,11 @@ export class AppComponent {
       this.textNewTodo = "";
     }
   }
+  trackByFn(index, item) {
+    return item.id;
+  }
   editTodo(todo: Todo) {
-    this.todos = this.todos
-    .map(_todo => (_todo.id === todo.id ? todo : _todo));
+    this.todos = this.todos.map(_todo => (_todo.id === todo.id ? todo : _todo));
     this.onSearch();
   }
   // toggleCompleted(id: string) {

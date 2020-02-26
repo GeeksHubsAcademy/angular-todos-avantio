@@ -16,21 +16,5 @@
    display: flex;
    flex-flow: column;
    align-items: center;
-  .todo {
-     min-width: 300px;
-     background-color: #eee;
-     margin: 1em 0;
-     padding: 1em;
-     border: solid 1px #666;
-     border-left:solid 2em;
-     &.completed {
-       opacity: 0.3;
-       text-decoration: line-through;
-     }
-     .date {
-       color: #555;
-       font-size: 0.7em;
-       margin: 1em 0;
-     }
-   }
+
  }
