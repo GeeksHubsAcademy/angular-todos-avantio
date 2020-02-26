@@ -1,0 +1,18 @@
+<div class="todo {{ data.completed ? 'completed' : 'uncompleted' }}"
+  [style.borderColor]="data.color"
+  >
+    <div class="text">
+      {{ data.text }}
+    </div>
+     <div class="date">
+     creado: {{ data.createdAt | date }}
+    </div>
+     <div class="date">
+     actualizado: {{ data.updatedAt | date }}
+    </div>
+    <div class="actions">
+      <input type="checkbox"  [checked]="data.completed" (click)="handleComplete()">
+      <button (click)="handleDelete()">delete</button>
+      <input type="color" [value]="data.color" (input)="handleColor( $event.target.value)">
+    </div>
+  </div>
