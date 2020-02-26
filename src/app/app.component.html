@@ -7,14 +7,13 @@
   />
   <input
     type="text"
-    (keyup)="onSearch()"
     [(ngModel)]="query"
     placeholder="search"
   />
 </header>
 <main>
   <app-todo
-    *ngFor="let todo of todosFiltered; trackBy :  trackByFn"
+    *ngFor="let todo of todos | filterArray: query; trackBy :  trackByFn"
     [data]="todo"
     (delete)="deleteTodo($event)"
     (edit)="editTodo($event)"

@@ -18,16 +18,8 @@ export class AppComponent {
       color: "#FF0000"
     }
   ];
-  todosFiltered: Todo[] = this.todos;
   query: string = "";
   textNewTodo: string = "";
-  onSearch() {
-    this.todosFiltered = this.todos.filter(todo =>
-      JSON.stringify(todo)
-        .toLowerCase()
-        .includes(this.query.trim().toLowerCase())
-    );
-  }
   onKeyUpHandler(event: any) {
     if (event.keyCode === 13) {
       this.addTodo(event.target.value);
@@ -39,7 +31,6 @@ export class AppComponent {
   }
   editTodo(todo: Todo) {
     this.todos = this.todos.map(_todo => (_todo.id === todo.id ? todo : _todo));
-    this.onSearch();
   }
   // toggleCompleted(id: string) {
   //   this.todos = this.todos.map(todo => {
@@ -50,7 +41,6 @@ export class AppComponent {
   //     }
   //     return todo;
   //   });
-  //   this.onSearch();
   // }
   // changeColor(id: string, color: string) {
   //   this.todos = this.todos.map(todo => {
@@ -61,7 +51,6 @@ export class AppComponent {
   //     }
   //     return todo;
   //   });
-  //   this.onSearch();
 
   // }
   addTodo(text: string): void {
@@ -74,11 +63,9 @@ export class AppComponent {
       updatedAt: now,
       color: "#555"
     };
-    this.todos.push(newTodo);
-    this.onSearch();
+    this.todos = [newTodo, ...this.todos];
   }
   deleteTodo(id: string) {
     this.todos = this.todos.filter(todo => todo.id !== id);
-    this.onSearch();
   }
 }
