@@ -14,10 +14,22 @@ export class AppComponent {
       text: "aprender ts",
       createdAt: new Date(),
       completed: true,
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      color: "#FF0000"
     }
   ];
+  todosFiltered: Todo[] = this.todos;
+  query: string = "";
   textNewTodo: string = "";
+  onSearch() {
+
+      this.todosFiltered = this.todos.filter(todo =>
+        JSON.stringify(todo)
+          .toLowerCase()
+          .includes(this.query.trim().toLowerCase())
+      );
+
+  }
   onKeyUpHandler(event: any) {
     if (event.keyCode === 13) {
       this.addTodo(event.target.value);
@@ -28,24 +40,42 @@ export class AppComponent {
     this.todos = this.todos.map(todo => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
+        const now = new Date();
+        todo.updatedAt = now;
       }
       return todo;
     });
+    this.onSearch();
+  }
+  changeColor(id: string, color: string) {
+    this.todos = this.todos.map(todo => {
+      if (todo.id === id) {
+        todo.color = color;
+        const now = new Date();
+        todo.updatedAt = now;
+      }
+      return todo;
+    });
+    this.onSearch();
+
   }
   addTodo(text: string): void {
-    console.log(text);
-
     const now = new Date();
     const newTodo = {
       id: `todo-${Date.now()}-${Math.random().toFixed(4)}`,
       text,
       createdAt: now,
       completed: false,
-      updatedAt: now
+      updatedAt: now,
+      color: "#555"
     };
     this.todos.push(newTodo);
+    this.onSearch();
+
   }
-  deleteTodo(id:string) {
-    this.todos = this.todos.filter(todo => todo.id !== id)
+  deleteTodo(id: string) {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    this.onSearch();
+
   }
 }

@@ -3,17 +3,32 @@
     type="text"
     (keyup)="onKeyUpHandler($event)"
     [(ngModel)]="textNewTodo"
+    placeholder="add todo"
   />
-  <h1>{{ textNewTodo }}</h1>
+   <input
+    type="text"
+    (keyup)="onSearch()"
+    [(ngModel)]="query"
+    placeholder="search"
+  />
 </header>
 <main>
-  <div class="todo {{ todo.completed ? 'completed' : 'uncompleted' }}" *ngFor="let todo of todos">
+  <div class="todo {{ todo.completed ? 'completed' : 'uncompleted' }}" *ngFor="let todo of todosFiltered"
+  [style.borderColor]="todo.color"
+  >
     <div class="text">
       {{ todo.text }}
+    </div>
+     <div class="date">
+     creado: {{ todo.createdAt | date }}
+    </div>
+     <div class="date">
+     actualizado: {{ todo.updatedAt | date }}
     </div>
     <div class="actions">
       <input type="checkbox"  [checked]="todo.completed" (click)="toggleCompleted(todo.id)">
       <button (click)="deleteTodo(todo.id)">delete</button>
+      <input type="color" [value]="todo.color" (input)="changeColor(todo.id, $event.target.value)">
     </div>
   </div>
 </main>
