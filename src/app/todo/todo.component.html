@@ -4,12 +4,10 @@
     <div class="text">
       {{ data.text }}
     </div>
-     <div class="date">
-     creado: {{ data.createdAt | date }}
-    </div>
-     <div class="date">
-     actualizado: {{ data.updatedAt | date }}
-    </div>
+    <app-timeago [date]="data.createdAt"  label="creado hace"></app-timeago>
+    <br>
+    <app-timeago [date]="data.updatedAt" label="modificado hace"></app-timeago>
+
     <div class="actions">
       <input type="checkbox"  [checked]="data.completed" (click)="handleComplete()">
       <button (click)="handleDelete()">delete</button>
